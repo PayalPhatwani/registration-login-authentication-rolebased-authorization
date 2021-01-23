@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+</head>
+<body>
+	<!-- Start - create navigation bar  -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}">Navbar</a>
+			<div class="d-flex">
+				<a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+				<a class="nav-link active" aria-current="page"
+					th:href="@{/registration}">Registration</a>
+			</div>
+		</div>
+	</nav>
+	<!-- End - create navigation bar  -->
+
+	<!-- Start Html Form  -->
+	<div class="container pt-2 mt-2">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<!--success message  -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our application ..!!</div>
+				</div>
+				<h1>Registration Panel</h1>
+
+				<form th:action="@{/registration}" method="post" th:object="${user}">
+
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">select your role</label> <select
+							class="form-control" id="exampleFormControlSelect1" th:field="*{role}"
+							required autofocus="autofocus">
+							<option value="ROLE_TEACHER">Teacher</option>
+							<option value="ROLE_STUDENT">Student</option>
+							
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="firstName" class="form-control" th:field="*{firstname}"
+							required autofocus="autofocus">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="lastName"> last Name </label> <input
+							id="lastName" class="form-control" th:field="*{lastname}"
+							required autofocus="autofocus">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="email"> Email </label> <input
+							id="email" class="form-control" th:field="*{email}" required
+							autofocus="autofocus">
+					</div>
+					<div class="form-group ">
+						<label class="control-label" for="password"> Password </label> <input
+							id="password" type="password" class="form-control"
+							th:field="*{password}" required autofocus="autofocus">
+					</div>
+			</div>
+
+			<div class="form-group pt-3">
+				<button type="submit" class="btn btn-success">Register</button>
+				<br> <span>Already registered? <a href="/"
+					th:href="@{/login}">Login Here</a>
+				</span>
+			</div>
+			</form>
+		</div>
+
+	</div>
+	<!--End Html form   -->
+
+</body>
+</html>

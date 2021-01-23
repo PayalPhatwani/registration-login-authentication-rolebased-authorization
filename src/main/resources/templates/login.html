@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+</head>
+<body>
+	<!-- Start - create navigation bar  -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}">Home</a>
+			<div class="d-flex">
+				<a class="nav-link active"
+						aria-current="page" th:href="@{/login}">Login</a>
+						<a class="nav-link active"
+						aria-current="page" th:href="@{/registration}">Registration</a>
+				</div>
+		</div>
+	</nav>
+	<!-- End - create navigation bar  -->
+
+	<!-- Start Html Form  -->
+	<div class="container pt-2 mt-2" >
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" >
+
+				<h1>Login Panel</h1>
+
+				<form th:action="@{/login}" method="post" >
+					<!--error message  -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid Username or password</div>
+					</div>
+						
+						
+					<!--logout message  -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logout</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="userName"> User Name </label>: 
+						<input type="text" class = "form-control" id ="username" name = "username"
+						placeholder="Enter Email ID" autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="userName">Password </label>: 
+						<input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Enter Password" />
+					</div>
+
+					<div class="form-group pt-3">
+						<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" />
+						<br> <span>Create an Account? <a href="/"
+							th:href="@{/registration}">Register Here</a>
+						</span>
+					</div>
+					</form>
+</body>
+</html>
